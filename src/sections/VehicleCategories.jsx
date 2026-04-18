@@ -17,11 +17,11 @@ function MobileVehicleRow({ vehicle, onClick }) {
   return (
     <button
       onClick={onClick}
-      className="w-full flex items-center gap-4 bg-white border border-gray-100 rounded-2xl px-4 py-3 hover:border-[#0F172A] hover:shadow-md active:scale-[0.99] transition-all text-left"
+      className="w-full flex items-center gap-3 bg-white border border-gray-100 rounded-2xl px-4 py-3 hover:border-[#0F172A] hover:shadow-md active:scale-[0.99] transition-all text-left"
     >
       {/* Mini car icon */}
-      <div className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: color.bg }}>
-        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-10 h-10">
+      <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: color.bg }}>
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8">
           <rect x="14" y="16" width="52" height="52" rx="12" fill={color.dot} opacity="0.9" />
           <rect x="20" y="26" width="40" height="22" rx="6" fill="white" opacity="0.25" />
           <circle cx="20" cy="26" r="8" fill={color.dot} opacity="0.85" />
@@ -35,19 +35,19 @@ function MobileVehicleRow({ vehicle, onClick }) {
         </svg>
       </div>
 
-      {/* Name + specs */}
+      {/* Name, badge, specs — structured lines */}
       <div className="flex-1 min-w-0">
         <div className="font-bold text-[#0F172A] text-sm leading-tight truncate">{vehicle.name}</div>
-        <div className="flex items-center gap-2 mt-1 flex-wrap">
-          <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full" style={{ color: color.text, backgroundColor: color.bg }}>
-            {vehicle.category}
-          </span>
-          <span className="text-[11px] text-[#64748B] flex items-center gap-1">
-            <Users className="w-3 h-3" />{vehicle.seats}
-          </span>
-          <span className="text-[11px] text-[#64748B] flex items-center gap-1">
-            <Fuel className="w-3 h-3" />{vehicle.fuel}
-          </span>
+        <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full mt-0.5 inline-block" style={{ color: color.text, backgroundColor: color.bg }}>
+          {vehicle.category}
+        </span>
+        <div className="flex items-center gap-1.5 mt-0.5">
+          <Users className="w-3 h-3 text-[#94A3B8]" />
+          <span className="text-[11px] text-[#64748B]">{vehicle.seats} Seats</span>
+          <span className="text-[#D1D5DB] text-[10px]">·</span>
+          <Fuel className="w-3 h-3 text-[#94A3B8]" />
+          <span className="text-[11px] text-[#64748B]">{vehicle.fuel}</span>
+          <span className="text-[#D1D5DB] text-[10px]">·</span>
           <span className="text-[11px] text-[#64748B]">{vehicle.transmission}</span>
         </div>
       </div>
@@ -62,20 +62,41 @@ function MobileVehicleRow({ vehicle, onClick }) {
   );
 }
 
-/* ─── Desktop 2-row horizontal scroll ─── */
+/* ─── Desktop grid — regular when few items, horizontal scroll when many ─── */
 function DesktopGrid({ filtered, onSelectVehicle }) {
   const scrollRef = useRef(null);
+  const needsScroll = filtered.length > 8;
 
   const scroll = (dir) => {
-    const container = scrollRef.current;
-    if (!container) return;
-    // Scroll by 2 card widths (approx 600px)
-    container.scrollBy({ left: dir * 600, behavior: 'smooth' });
+    scrollRef.current?.scrollBy({ left: dir * 600, behavior: 'smooth' });
   };
 
+  /* Regular centered grid for ≤ 8 items (no empty-space problem) */
+  if (!needsScroll) {
+    return (
+      <div className="flex flex-wrap justify-center gap-5">
+        <AnimatePresence mode="popLayout">
+          {filtered.map((vehicle, i) => (
+            <motion.div
+              key={vehicle.id}
+              layout
+              style={{ width: '280px' }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.22, delay: Math.min(i * 0.05, 0.25) }}
+            >
+              <VehicleCard vehicle={vehicle} onClick={() => onSelectVehicle(vehicle)} />
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
+    );
+  }
+
+  /* 2-row horizontal scroll for > 8 items */
   return (
     <div className="relative">
-      {/* Scroll buttons */}
       <button
         onClick={() => scroll(-1)}
         className="hidden md:flex absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white border border-gray-200 shadow-md items-center justify-center hover:bg-[#0F172A] hover:text-white hover:border-[#0F172A] transition-colors"
@@ -83,13 +104,11 @@ function DesktopGrid({ filtered, onSelectVehicle }) {
         <ChevronLeft className="w-5 h-5" />
       </button>
 
-      {/* 2-row horizontal scroll container */}
       <div
         ref={scrollRef}
         className="overflow-x-auto scroll-smooth pb-4"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
-        <style>{`.no-scrollbar::-webkit-scrollbar { display: none; }`}</style>
         <div
           className="grid gap-5 w-max"
           style={{
