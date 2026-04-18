@@ -1,5 +1,7 @@
+import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import WhatsAppButton from './components/WhatsAppButton';
+import VehicleDetailPage from './components/VehicleDetailPage';
 import Hero from './sections/Hero';
 import FeaturedVehicles from './sections/FeaturedVehicles';
 import VehicleCategories from './sections/VehicleCategories';
@@ -11,21 +13,44 @@ import Contact from './sections/Contact';
 import Footer from './sections/Footer';
 
 function App() {
+  const [selectedVehicle, setSelectedVehicle] = useState(null);
+
+  // Allow child components to open vehicle detail via custom event
+  useEffect(() => {
+    const handler = (e) => setSelectedVehicle(e.detail);
+    window.addEventListener('open-vehicle', handler);
+    return () => window.removeEventListener('open-vehicle', handler);
+  }, []);
+
+  // Lock body scroll when detail is open
+  useEffect(() => {
+    document.body.style.overflow = selectedVehicle ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [selectedVehicle]);
+
   return (
     <div className="min-h-screen">
       <Navbar />
       <main>
-        <Hero />
-        <FeaturedVehicles />
-        <VehicleCategories />
-        <Services />
+        <Hero onBookNow={() => document.getElementById('vehicles')?.scrollIntoView({ behavior: 'smooth' })} />
         <WhyChooseUs />
+        <FeaturedVehicles onSelectVehicle={setSelectedVehicle} />
+        <Services />
+        <VehicleCategories onSelectVehicle={setSelectedVehicle} />
         <Testimonials />
         <Gallery />
         <Contact />
       </main>
       <Footer />
       <WhatsAppButton />
+
+      {/* Vehicle detail overlay */}
+      {selectedVehicle && (
+        <VehicleDetailPage
+          vehicle={selectedVehicle}
+          onClose={() => setSelectedVehicle(null)}
+        />
+      )}
     </div>
   );
 }

@@ -3,10 +3,9 @@ import { vehicles } from '../data/vehicles';
 import VehicleCard from '../components/VehicleCard';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export default function VehicleCategories() {
+export default function VehicleCategories({ onSelectVehicle }) {
   const [activeTab, setActiveTab] = useState('All');
   const categories = ['All', 'Hatchback', 'Sedan', 'SUV', 'MUV'];
-
   const filtered = activeTab === 'All' ? vehicles : vehicles.filter(v => v.category === activeTab);
 
   return (
@@ -24,7 +23,7 @@ export default function VehicleCategories() {
                 onClick={() => setActiveTab(cat)}
                 className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${
                   activeTab === cat
-                    ? 'bg-[#0F172A] text-white'
+                    ? 'bg-[#0F172A] text-white shadow-md'
                     : 'bg-white text-[#475569] border border-gray-200 hover:border-[#0F172A] hover:text-[#0F172A]'
                 }`}
               >
@@ -45,7 +44,7 @@ export default function VehicleCategories() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.25 }}
               >
-                <VehicleCard vehicle={vehicle} />
+                <VehicleCard vehicle={vehicle} onClick={() => onSelectVehicle(vehicle)} />
               </motion.div>
             ))}
           </AnimatePresence>

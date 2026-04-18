@@ -3,7 +3,7 @@ import { vehicles } from '../data/vehicles';
 import VehicleCard from '../components/VehicleCard';
 import { motion } from 'framer-motion';
 
-export default function FeaturedVehicles() {
+export default function FeaturedVehicles({ onSelectVehicle }) {
   const featured = vehicles.slice(0, 6);
 
   return (
@@ -13,9 +13,7 @@ export default function FeaturedVehicles() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
           <div>
             <p className="text-[#F59E0B] font-bold text-sm uppercase tracking-widest mb-3">Our Fleet</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] leading-tight">
-              Popular Vehicles
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] leading-tight">Popular Vehicles</h2>
             <p className="text-[#64748B] mt-3 max-w-lg text-sm leading-relaxed">
               Maintained to the highest standards — every car is inspected, sanitized, and ready for your trip.
             </p>
@@ -37,7 +35,7 @@ export default function FeaturedVehicles() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
             >
-              <VehicleCard vehicle={vehicle} />
+              <VehicleCard vehicle={vehicle} onClick={() => onSelectVehicle(vehicle)} />
             </motion.div>
           ))}
         </div>

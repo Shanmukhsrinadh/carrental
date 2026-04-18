@@ -1,80 +1,115 @@
 import React from 'react';
-import { Phone, MessageCircle, Clock, MapPin } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { MessageCircle, Phone, MapPin, Mail, ExternalLink } from 'lucide-react';
 
 export default function Contact() {
-  const handleWhatsApp = () => window.open('https://wa.me/919876543210', '_blank');
+  const handleWhatsApp = () => window.open('https://wa.me/919876543210?text=' + encodeURIComponent('Hi, I\'d like to book a ride.'), '_blank');
+  const handleCall    = () => window.open('tel:+919876543210');
+  const handleMaps    = () => window.open('https://maps.app.goo.gl/YourLocation', '_blank');
 
   return (
-    <section id="contact" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="contact" className="relative h-[420px] md:h-[380px] overflow-hidden">
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      {/* Full-bleed map background */}
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3800.6!2d83.3104!3d17.7434!2m3!1f0!2f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3943335e093e25%3A0x97edf523ac7dd5b9!2sVisakhapatnam%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1776366429166!5m2!1sen!2sin"
+        className="absolute inset-0 w-full h-full border-0 pointer-events-none"
+        allowFullScreen
+        loading="lazy"
+        title="Location Map"
+      />
 
-          {/* Left */}
+      {/* Dark gradient overlay — left 60% */}
+      <div
+        className="absolute inset-0"
+        style={{ background: 'linear-gradient(to right, rgba(10,15,30,0.96) 0%, rgba(10,15,30,0.92) 45%, rgba(10,15,30,0.5) 65%, transparent 85%)' }}
+      />
+
+      {/* Content grid */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 h-full flex items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full items-center">
+
+          {/* Left — headline + CTAs */}
           <div>
-            <p className="text-[#F59E0B] font-bold text-sm uppercase tracking-widest mb-3">Contact Us</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] mb-4 leading-tight">
-              Ready to Book<br />Your Ride?
+            <p className="text-[#F59E0B] font-bold text-xs uppercase tracking-[0.2em] mb-4">Book Instantly</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-3">
+              Your ride is one<br />
+              <span className="text-[#3B82F6]">message away</span>
             </h2>
-            <p className="text-[#64748B] text-sm leading-relaxed mb-10 max-w-md">
-              Reach out via WhatsApp for the fastest response. We typically reply within minutes.
+            <p className="text-white/60 text-sm leading-relaxed mb-7 max-w-sm">
+              Get in touch today to book your ride, confirm availability, or ask any travel questions. We respond within minutes.
             </p>
 
-            <div className="space-y-4 mb-8">
-              {[
-                { icon: <Phone className="w-5 h-5" />, label: 'Call Us', value: '+91 98765 43210', action: () => window.open('tel:+919876543210') },
-                { icon: <MessageCircle className="w-5 h-5" />, label: 'WhatsApp', value: 'Chat instantly', action: handleWhatsApp },
-                { icon: <Clock className="w-5 h-5" />, label: 'Availability', value: '24 / 7', action: null },
-                { icon: <MapPin className="w-5 h-5" />, label: 'Location', value: 'Visakhapatnam, Andhra Pradesh', action: null },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -16 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
-                  onClick={item.action}
-                  className={`flex items-center gap-4 p-4 rounded-xl border border-gray-100 bg-[#F8FAFC] ${item.action ? 'cursor-pointer hover:border-[#0F172A] transition-colors group' : ''}`}
-                >
-                  <div className="w-10 h-10 rounded-xl bg-[#0F172A] flex items-center justify-center text-white flex-shrink-0 group-hover:bg-[#F97316] transition-colors">
-                    {item.icon}
-                  </div>
-                  <div>
-                    <div className="text-xs text-[#94A3B8] font-medium uppercase tracking-wider">{item.label}</div>
-                    <div className="font-bold text-[#0F172A] text-sm">{item.value}</div>
-                  </div>
-                </motion.div>
-              ))}
+            <div className="flex flex-wrap gap-3">
+              <button
+                onClick={handleWhatsApp}
+                className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1eba58] text-white font-bold text-sm px-5 py-2.5 rounded-full transition-colors"
+              >
+                <MessageCircle className="w-4 h-4" />
+                Chat on WhatsApp
+              </button>
+              <button
+                onClick={handleCall}
+                className="inline-flex items-center gap-2 border border-white/30 hover:border-white text-white font-semibold text-sm px-5 py-2.5 rounded-full transition-colors"
+              >
+                <Phone className="w-4 h-4" />
+                Call +91 98765 43210
+              </button>
             </div>
-
-            <button
-              onClick={handleWhatsApp}
-              className="bg-[#25D366] hover:bg-[#1eba58] text-white font-bold px-8 py-3.5 rounded-xl text-sm transition-colors flex items-center gap-2"
-            >
-              <MessageCircle className="w-5 h-5" />
-              Chat on WhatsApp Now
-            </button>
           </div>
 
-          {/* Right: Map */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="h-[460px] rounded-2xl overflow-hidden border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.06)]"
-          >
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1900.0129956572264!2d83.3104168813759!3d17.7434144632578!2m3!1f0!2f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3943335e093e25%3A0x97edf523ac7dd5b9!2sTaj%20Travels!5e0!3m2!1sen!2sin!4v1776366429166!5m2!1sen!2sin"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Office Location"
-            />
-          </motion.div>
+          {/* Right — floating info card */}
+          <div className="hidden lg:flex justify-end">
+            <div className="bg-[#0F172A]/90 backdrop-blur-md border border-white/10 rounded-2xl p-6 w-80 shadow-2xl">
+              {/* Card header */}
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-[#F59E0B] text-[10px] font-bold uppercase tracking-widest">Actual Location</span>
+                <button
+                  onClick={handleMaps}
+                  className="inline-flex items-center gap-1.5 border border-white/20 hover:border-white/50 text-white text-xs font-semibold px-3 py-1 rounded-full transition-colors"
+                >
+                  <ExternalLink className="w-3 h-3" />
+                  Open in Maps
+                </button>
+              </div>
+
+              <p className="text-white/40 text-xs leading-relaxed mb-5">
+                The map shows our pickup and contact location. Open in Maps for directions.
+              </p>
+
+              <div className="space-y-3.5">
+                <div className="flex items-start gap-3">
+                  <div className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-3.5 h-3.5 text-[#F59E0B]" />
+                  </div>
+                  <div>
+                    <div className="text-[10px] text-white/40 uppercase tracking-wider mb-0.5">Location</div>
+                    <div className="text-white text-xs font-semibold">Padma Priya Enterprises, Vizag,<br/>Andhra Pradesh</div>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-3.5 h-3.5 text-[#F59E0B]" />
+                  </div>
+                  <div>
+                    <div className="text-[10px] text-white/40 uppercase tracking-wider mb-0.5">Phone</div>
+                    <div className="text-white text-xs font-semibold">+91 98765 43210</div>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-3.5 h-3.5 text-[#F59E0B]" />
+                  </div>
+                  <div>
+                    <div className="text-[10px] text-white/40 uppercase tracking-wider mb-0.5">Email</div>
+                    <div className="text-white text-xs font-semibold">contact@padmapriyarentals.com</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
