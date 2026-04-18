@@ -1,81 +1,133 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Car, Headphones, Wallet, Shield, MapPin, CheckCircle } from 'lucide-react';
+import {
+  Shield,
+  MapPin,
+  Star,
+  Headphones,
+  Car,
+  Wallet,
+  CheckCircle,
+} from "lucide-react";
 
 const features = [
-  { icon: <Car className="w-5 h-5" />,         title: 'Professional Drivers',   desc: 'Experienced, verified drivers who know every route in and around Vizag.' },
-  { icon: <Headphones className="w-5 h-5" />,  title: '24/7 Support',           desc: 'Reach us instantly via WhatsApp or phone — quick response, any time.' },
-  { icon: <Wallet className="w-5 h-5" />,      title: 'Transparent Pricing',    desc: 'What you see is what you pay. No hidden charges, no surprise fees.' },
-  { icon: <Shield className="w-5 h-5" />,      title: 'Fully Insured',          desc: 'All vehicles are comprehensively insured for complete peace of mind.' },
-  { icon: <MapPin className="w-5 h-5" />,      title: 'Wide Coverage',          desc: 'City rides, outstation trips, and airport transfers across Andhra Pradesh.' },
-  { icon: <CheckCircle className="w-5 h-5" />, title: 'Well-Maintained Fleet',  desc: 'Every vehicle is regularly serviced and inspected before each trip.' },
+  {
+    icon: Car,
+    title: "Professional Drivers",
+    description:
+      "Experienced, verified drivers who know every route in and around Vizag.",
+  },
+  {
+    icon: Headphones,
+    title: "24/7 Support",
+    description:
+      "Reach us instantly via WhatsApp or phone — quick response, any time.",
+  },
+  {
+    icon: Wallet,
+    title: "Transparent Pricing",
+    description:
+      "What you see is what you pay. No hidden charges, no surprise fees.",
+  },
+  {
+    icon: Shield,
+    title: "Fully Insured",
+    description:
+      "All vehicles are comprehensively insured for complete peace of mind.",
+  },
+  {
+    icon: MapPin,
+    title: "Wide Coverage",
+    description:
+      "City rides, outstation trips, and airport transfers across Andhra Pradesh.",
+  },
+  {
+    icon: CheckCircle,
+    title: "Well-Maintained Fleet",
+    description:
+      "Every vehicle is regularly serviced and inspected before each trip.",
+  },
 ];
 
 export default function WhyChooseUs() {
   return (
-    <section id="why-choose-us" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-14 lg:py-20 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Title */}
-        <motion.h2
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-bold text-[#0F172A] flex items-center gap-3 mb-14"
-        >
-          <span className="text-[#F59E0B] text-2xl">★</span>
-          Best Car Rentals in Vizag
-          <span className="text-[#F59E0B] text-2xl">★</span>
-        </motion.h2>
+        <div className="flex items-center gap-3 mb-10">
+          <Star className="w-5 h-5 text-amber-400 fill-amber-400" />
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
+            Best Car Rentals in Vizag
+          </h2>
+          <Star className="w-5 h-5 text-amber-400 fill-amber-400" />
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        {/* Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr_3fr] gap-10 items-center">
 
-          {/* Left — car + tagline side by side */}
-          <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col sm:flex-row items-center sm:items-start gap-8"
-          >
-            {/* Car image — upright, no rotation */}
-            <div className="flex-shrink-0 w-48 sm:w-56">
-              <img
-                src="https://i.ibb.co/qFRYSpzK/pngwing-com.png"
-                alt="Luxury car top view"
-                className="w-full drop-shadow-2xl animate-float-car"
-                style={{ transform: 'none' }}
-              />
-            </div>
+          {/* Car */}
+          <div className="flex justify-center lg:justify-start">
+            <img
+              src="https://i.ibb.co/qFRYSpzK/pngwing-com.png"
+              alt="Premium rental car top view"
+              className="
+                w-full 
+                max-w-sm 
+                lg:max-w-xl 
+                object-contain
+                translate-x-6
+                scale-105
+                transition-transform duration-500 ease-out
+                hover:-translate-y-4
+              "
+              style={{
+                mixBlendMode: "multiply",
+                maxHeight: "480px",
+                filter: "drop-shadow(0px 25px 40px rgba(0,0,0,0.15))",
+              }}
+            />
+          </div>
 
-            {/* Tagline — vertically centered beside car */}
-            <div className="flex items-center">
-              <p className="text-[#475569] text-lg leading-relaxed italic">
-                From daily city commutes to long outstation journeys — Padma Priya Enterprises delivers comfort, reliability, and value on every trip.
-              </p>
-            </div>
-          </motion.div>
+          {/* Tagline */}
+          <div className="flex items-center lg:-ml-6">
+            <p className="
+              text-gray-500 
+              text-[17px] 
+              leading-7 
+              max-w-xl
+            ">
+              From daily city commutes to long outstation journeys —
+              <span className="text-gray-900 font-semibold">
+                {" "}Padma Priya Enterprises
+              </span>{" "}
+              delivers comfort, reliability, and value on every trip.
+            </p>
+          </div>
 
-          {/* Right — 2-col feature grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-7">
-            {features.map((f, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="flex items-start gap-4"
-              >
-                <div className="w-11 h-11 rounded-xl bg-[#0F172A] flex items-center justify-center text-white flex-shrink-0">
-                  {f.icon}
+          {/* Features */}
+          <div className="grid grid-cols-2 gap-x-6 gap-y-6">
+            {features.map((feature) => {
+              const Icon = feature.icon;
+
+              return (
+                <div
+                  key={feature.title}
+                  className="flex items-start gap-3 group"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-gray-900 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-blue-600 group-hover:scale-110">
+                    <Icon className="w-4 h-4 text-white" />
+                  </div>
+
+                  <div>
+                    <h3 className="text-sm font-semibold text-gray-900 mb-1">
+                      {feature.title}
+                    </h3>
+                    <p className="text-xs text-gray-500 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-bold text-[#0F172A] text-sm mb-1">{f.title}</h4>
-                  <p className="text-[#64748B] text-sm leading-relaxed">{f.desc}</p>
-                </div>
-              </motion.div>
-            ))}
+              );
+            })}
           </div>
 
         </div>

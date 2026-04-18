@@ -45,3 +45,11 @@
 .animate-marquee   { animation: marquee 45s linear infinite; }
 .animate-slide-in  { animation: slide-in-right 0.4s cubic-bezier(0.16,1,0.3,1) forwards; }
 .animate-fade-in   { animation: fade-in 0.3s ease forwards; }
+/* Hide scrollbar but keep scroll working */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
