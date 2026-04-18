@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import vehicles from '../data/vehicles.json';
 import VehicleCard from '../components/VehicleCard';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Users, Fuel, Settings, Zap } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Users, Fuel } from 'lucide-react';
 
 const categoryColors = {
   Hatchback: { bg: '#EFF6FF', text: '#1D4ED8', dot: '#3B82F6' },
@@ -35,10 +35,13 @@ function MobileVehicleRow({ vehicle, onClick }) {
         </svg>
       </div>
 
-      {/* Name, badge, specs — structured lines */}
+      {/* Name, badge, specs — three clean lines */}
       <div className="flex-1 min-w-0">
         <div className="font-bold text-[#0F172A] text-sm leading-tight truncate">{vehicle.name}</div>
-        <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full mt-0.5 inline-block" style={{ color: color.text, backgroundColor: color.bg }}>
+        <span
+          className="text-[11px] font-semibold px-2 py-0.5 rounded-full mt-0.5 inline-block"
+          style={{ color: color.text, backgroundColor: color.bg }}
+        >
           {vehicle.category}
         </span>
         <div className="flex items-center gap-1.5 mt-0.5">
@@ -62,7 +65,7 @@ function MobileVehicleRow({ vehicle, onClick }) {
   );
 }
 
-/* ─── Desktop grid — regular when few items, horizontal scroll when many ─── */
+/* ─── Desktop grid — centered when few items, horizontal scroll when many ─── */
 function DesktopGrid({ filtered, onSelectVehicle }) {
   const scrollRef = useRef(null);
   const needsScroll = filtered.length > 8;
@@ -71,7 +74,7 @@ function DesktopGrid({ filtered, onSelectVehicle }) {
     scrollRef.current?.scrollBy({ left: dir * 600, behavior: 'smooth' });
   };
 
-  /* Regular centered grid for ≤ 8 items (no empty-space problem) */
+  /* Regular centered layout for ≤ 8 items */
   if (!needsScroll) {
     return (
       <div className="flex flex-wrap justify-center gap-5">
@@ -173,14 +176,14 @@ export default function VehicleCategories({ onSelectVehicle }) {
               >
                 {cat}
                 <span className={`ml-1.5 text-xs font-bold ${activeTab === cat ? 'text-white/60' : 'text-[#94A3B8]'}`}>
-                  ({(activeTab === cat ? filtered : (cat === 'All' ? vehicles : vehicles.filter(v => v.category === cat))).length})
+                  ({(cat === 'All' ? vehicles : vehicles.filter(v => v.category === cat)).length})
                 </span>
               </button>
             ))}
           </div>
         </div>
 
-        {/* Desktop: 2-row horizontal scroll */}
+        {/* Desktop: smart grid */}
         <div className="hidden md:block px-5">
           {filtered.length > 0
             ? <DesktopGrid filtered={filtered} onSelectVehicle={onSelectVehicle} />
@@ -202,13 +205,13 @@ export default function VehicleCategories({ onSelectVehicle }) {
           }
         </div>
 
-        {/* Count badge */}
+        {/* Footer note */}
         <p className="text-center text-[#94A3B8] text-xs mt-8">
           Showing {filtered.length} of {vehicles.length} vehicles
           {activeTab !== 'All' && ` in ${activeTab}`}
           {' · '}
           <button
-            onClick={() => onSelectVehicle && document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             className="text-[#F59E0B] font-semibold hover:underline"
           >
             Need a custom vehicle? Contact us
