@@ -5,30 +5,27 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function VehicleCategories() {
   const [activeTab, setActiveTab] = useState('All');
-  
   const categories = ['All', 'Hatchback', 'Sedan', 'SUV', 'MUV'];
 
-  const filteredVehicles = activeTab === 'All' 
-    ? vehicles 
-    : vehicles.filter(v => v.category === activeTab);
+  const filtered = activeTab === 'All' ? vehicles : vehicles.filter(v => v.category === activeTab);
 
   return (
-    <section id="categories" className="py-24 bg-[#F8F9FA]">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="categories" className="py-24 bg-[#F8FAFC]">
+      <div className="max-w-7xl mx-auto px-6">
+
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-8">
-            Find Your Perfect Ride
-          </h2>
-          
-          <div className="flex flex-wrap justify-center gap-3">
+          <p className="text-[#F59E0B] font-bold text-sm uppercase tracking-widest mb-3">Browse by Type</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] mb-8">Find Your Perfect Ride</h2>
+
+          <div className="flex flex-wrap justify-center gap-2">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveTab(cat)}
-                className={`px-6 py-3 rounded-full text-sm font-bold transition-all duration-300 ${
-                  activeTab === cat 
-                    ? 'bg-primary text-white shadow-[0_8px_20px_rgba(13,110,253,0.3)] scale-105' 
-                    : 'bg-white text-gray-600 border border-gray-200 hover:border-primary hover:text-primary'
+                className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${
+                  activeTab === cat
+                    ? 'bg-[#0F172A] text-white'
+                    : 'bg-white text-[#475569] border border-gray-200 hover:border-[#0F172A] hover:text-[#0F172A]'
                 }`}
               >
                 {cat}
@@ -37,16 +34,16 @@ export default function VehicleCategories() {
           </div>
         </div>
 
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           <AnimatePresence mode="popLayout">
-            {filteredVehicles.map((vehicle) => (
+            {filtered.map((vehicle) => (
               <motion.div
                 key={vehicle.id}
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.25 }}
               >
                 <VehicleCard vehicle={vehicle} />
               </motion.div>
@@ -54,10 +51,8 @@ export default function VehicleCategories() {
           </AnimatePresence>
         </motion.div>
 
-        {filteredVehicles.length === 0 && (
-          <div className="text-center py-20 text-gray-500 font-medium">
-            No vehicles found in this category.
-          </div>
+        {filtered.length === 0 && (
+          <div className="text-center py-20 text-[#94A3B8] text-sm">No vehicles in this category.</div>
         )}
       </div>
     </section>

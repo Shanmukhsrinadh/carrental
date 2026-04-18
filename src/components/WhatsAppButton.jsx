@@ -4,25 +4,21 @@ import { MessageCircle } from 'lucide-react';
 export default function WhatsAppButton() {
   const [showTooltip, setShowTooltip] = useState(false);
 
-  const handleClick = () => {
-    window.open('https://wa.me/919876543210', '_blank');
-  };
-
   return (
     <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
       {showTooltip && (
-        <div className="bg-white text-gray-900 font-medium py-2 px-4 shadow-lg rounded-xl text-sm whitespace-nowrap">
-          Chat with us
+        <div className="bg-white text-[#0F172A] text-sm font-semibold py-2 px-4 rounded-xl shadow-lg border border-gray-100 whitespace-nowrap">
+          Book via WhatsApp
         </div>
       )}
       <button
-        onClick={handleClick}
+        onClick={() => window.open('https://wa.me/919876543210', '_blank')}
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
-        className="bg-[#25D366] text-white p-4 rounded-full shadow-[0_8px_30px_rgba(37,211,102,0.3)] hover:scale-110 transition-transform duration-300 flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-[#25D366]/50"
+        className="bg-[#25D366] text-white p-4 rounded-full shadow-[0_8px_30px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform duration-200 flex items-center justify-center"
         aria-label="Chat on WhatsApp"
       >
-        <MessageCircle className="w-7 h-7" />
+        <MessageCircle className="w-6 h-6" />
       </button>
     </div>
   );

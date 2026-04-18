@@ -1,108 +1,80 @@
 import React from 'react';
-import { MapPin, Phone, Clock, MessageCircle } from 'lucide-react';
+import { Phone, MessageCircle, Clock, MapPin } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Contact() {
-  const contactCards = [
-    {
-      icon: <Phone className="w-6 h-6" />,
-      title: "Call Us",
-      details: "+91 9876543210",
-      subDetails: "We answer 24/7",
-      action: () => window.open('tel:+919876543210')
-    },
-    {
-      icon: <MessageCircle className="w-6 h-6" />,
-      title: "WhatsApp",
-      details: "Message us anytime",
-      subDetails: "Fastest response",
-      action: () => window.open('https://wa.me/919876543210', '_blank')
-    },
-    {
-      icon: <Clock className="w-6 h-6" />,
-      title: "Working Hours",
-      details: "Available 24/7",
-      subDetails: "For pre-booked trips",
-      action: null
-    }
-  ];
+  const handleWhatsApp = () => window.open('https://wa.me/919876543210', '_blank');
 
   return (
-    <section id="contact" className="py-24 bg-[#EFF6FF]">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6">
-            Get In Touch
-          </h2>
-          <p className="text-lg text-gray-600 font-medium max-w-2xl mx-auto">
-            Ready to book your ride? Need a custom quote? Reach out to us through any of the channels below.
-          </p>
-        </div>
+    <section id="contact" className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-          
-          {/* Left Column: Info Cards */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
-            {contactCards.map((card, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="bg-white rounded-3xl p-6 flex items-center gap-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)] border border-blue-50 cursor-pointer group"
-                onClick={card.action}
-              >
-                <div className="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                  {card.icon}
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-900 text-lg mb-1">{card.title}</h4>
-                  <p className="text-primary font-bold">{card.details}</p>
-                  <p className="text-sm text-gray-500 font-medium">{card.subDetails}</p>
-                </div>
-              </motion.div>
-            ))}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="bg-white rounded-3xl p-6 flex items-start gap-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)] border border-blue-50"
+          {/* Left */}
+          <div>
+            <p className="text-[#F59E0B] font-bold text-sm uppercase tracking-widest mb-3">Contact Us</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] mb-4 leading-tight">
+              Ready to Book<br />Your Ride?
+            </h2>
+            <p className="text-[#64748B] text-sm leading-relaxed mb-10 max-w-md">
+              Reach out via WhatsApp for the fastest response. We typically reply within minutes.
+            </p>
+
+            <div className="space-y-4 mb-8">
+              {[
+                { icon: <Phone className="w-5 h-5" />, label: 'Call Us', value: '+91 98765 43210', action: () => window.open('tel:+919876543210') },
+                { icon: <MessageCircle className="w-5 h-5" />, label: 'WhatsApp', value: 'Chat instantly', action: handleWhatsApp },
+                { icon: <Clock className="w-5 h-5" />, label: 'Availability', value: '24 / 7', action: null },
+                { icon: <MapPin className="w-5 h-5" />, label: 'Location', value: 'Visakhapatnam, Andhra Pradesh', action: null },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -16 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  onClick={item.action}
+                  className={`flex items-center gap-4 p-4 rounded-xl border border-gray-100 bg-[#F8FAFC] ${item.action ? 'cursor-pointer hover:border-[#0F172A] transition-colors group' : ''}`}
+                >
+                  <div className="w-10 h-10 rounded-xl bg-[#0F172A] flex items-center justify-center text-white flex-shrink-0 group-hover:bg-[#F97316] transition-colors">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <div className="text-xs text-[#94A3B8] font-medium uppercase tracking-wider">{item.label}</div>
+                    <div className="font-bold text-[#0F172A] text-sm">{item.value}</div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <button
+              onClick={handleWhatsApp}
+              className="bg-[#25D366] hover:bg-[#1eba58] text-white font-bold px-8 py-3.5 rounded-xl text-sm transition-colors flex items-center gap-2"
             >
-              <div className="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center text-primary flex-shrink-0">
-                <MapPin className="w-6 h-6" />
-              </div>
-              <div>
-                <h4 className="font-bold text-gray-900 text-lg mb-2">Our Location</h4>
-                <p className="text-gray-600 font-medium leading-relaxed">
-                  Visakhapatnam, Andhra Pradesh, India<br/>
-                  Providing services across the city and state.
-                </p>
-              </div>
-            </motion.div>
+              <MessageCircle className="w-5 h-5" />
+              Chat on WhatsApp Now
+            </button>
           </div>
 
-          {/* Right Column: Map */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
+          {/* Right: Map */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="lg:col-span-7 h-[500px] lg:h-auto rounded-3xl overflow-hidden shadow-2xl border border-white"
+            className="h-[460px] rounded-2xl overflow-hidden border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.06)]"
           >
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1900.0129956572264!2d83.3104168813759!3d17.7434144632578!2m3!1f0!2f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3943335e093e25%3A0x97edf523ac7dd5b9!2sTaj%20Travels!5e0!3m2!1sen!2sin!4v1776366429166!5m2!1sen!2sin" 
-              width="100%" 
-              height="100%" 
-              style={{ border: 0 }} 
-              allowFullScreen 
-              loading="lazy" 
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1900.0129956572264!2d83.3104168813759!3d17.7434144632578!2m3!1f0!2f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3943335e093e25%3A0x97edf523ac7dd5b9!2sTaj%20Travels!5e0!3m2!1sen!2sin!4v1776366429166!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Office Location Map"
+              title="Office Location"
             />
           </motion.div>
-
         </div>
       </div>
     </section>

@@ -1,75 +1,102 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { UserCheck, ShieldCheck, Clock, Wallet, HeadphonesIcon, Smartphone } from 'lucide-react';
+import { Car, Headphones, Wallet, Shield, MapPin, CheckCircle } from 'lucide-react';
+
+const features = [
+  {
+    icon: <Car className="w-5 h-5" />,
+    title: 'Professional Drivers',
+    desc: 'Experienced, verified drivers who know every route in and around Vizag.',
+  },
+  {
+    icon: <Headphones className="w-5 h-5" />,
+    title: '24/7 Support',
+    desc: 'Reach us instantly via WhatsApp or phone — quick response, any time.',
+  },
+  {
+    icon: <Wallet className="w-5 h-5" />,
+    title: 'Transparent Pricing',
+    desc: 'What you see is what you pay. No hidden charges, no surprise fees.',
+  },
+  {
+    icon: <Shield className="w-5 h-5" />,
+    title: 'Fully Insured',
+    desc: 'All vehicles are comprehensively insured for complete peace of mind.',
+  },
+  {
+    icon: <MapPin className="w-5 h-5" />,
+    title: 'Wide Coverage',
+    desc: 'City rides, outstation trips, and airport transfers across Andhra Pradesh.',
+  },
+  {
+    icon: <CheckCircle className="w-5 h-5" />,
+    title: 'Well-Maintained Fleet',
+    desc: 'Every vehicle is regularly serviced and inspected before each trip.',
+  },
+];
 
 export default function WhyChooseUs() {
-  const features = [
-    {
-      icon: <UserCheck className="w-6 h-6" />,
-      title: "Professional Drivers",
-      description: "Experienced, polite, and highly knowledgeable about local routes and traffic patterns."
-    },
-    {
-      icon: <ShieldCheck className="w-6 h-6" />,
-      title: "Clean Vehicles",
-      description: "Every car is thoroughly sanitized, serviced, and inspected before each trip."
-    },
-    {
-      icon: <Clock className="w-6 h-6" />,
-      title: "On-Time Guarantee",
-      description: "Punctuality is our priority. We ensure you reach your destination without delays."
-    },
-    {
-      icon: <Wallet className="w-6 h-6" />,
-      title: "Transparent Pricing",
-      description: "Honest rates with absolutely no hidden charges or last-minute surprises."
-    },
-    {
-      icon: <HeadphonesIcon className="w-6 h-6" />,
-      title: "24/7 Support",
-      description: "Round-the-clock customer service to assist you at any point during your journey."
-    },
-    {
-      icon: <Smartphone className="w-6 h-6" />,
-      title: "Easy WhatsApp Booking",
-      description: "Book your ride instantly through WhatsApp with just a few quick messages."
-    }
-  ];
-
   return (
-    <section id="why-choose-us" className="py-24 bg-[#F8F9FA]">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block px-3 py-1 rounded-full bg-teal-50 text-teal-600 font-bold text-xs tracking-widest uppercase mb-4">
-            Why Choose Us
-          </span>
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6">
-            The Padma Priya Difference
-          </h2>
-        </div>
+    <section id="why-choose-us" className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-gray-100 group relative overflow-hidden"
-            >
-              {/* Left accent border on hover */}
-              <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary transform scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom duration-300"></div>
-              
-              <div className="w-14 h-14 rounded-2xl bg-teal-50 flex items-center justify-center text-teal-600 mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                {feature.icon}
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-              <p className="text-gray-600 leading-relaxed font-medium">
-                {feature.description}
-              </p>
-            </motion.div>
-          ))}
+        {/* Title */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-14"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] flex items-center gap-3">
+            <span className="text-[#F59E0B]">★</span>
+            Best Car Rentals in Vizag
+            <span className="text-[#F59E0B]">★</span>
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+          {/* Left — car image + tagline */}
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative flex flex-col items-center"
+          >
+            <img
+              src="https://i.ibb.co/qFRYSpzK/pngwing-com.png"
+              alt="Luxury car top view"
+              className="w-full max-w-sm drop-shadow-2xl animate-float"
+            />
+            <p className="mt-8 text-[#475569] text-lg leading-relaxed italic text-center max-w-sm">
+              From daily city commutes to long outstation journeys — Padma Priya Enterprises delivers comfort, reliability, and value on every trip.
+            </p>
+          </motion.div>
+
+          {/* Right — 2-col feature grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {features.map((f, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.5 }}
+                className="flex items-start gap-4"
+              >
+                {/* Dark icon box */}
+                <div className="w-11 h-11 rounded-xl bg-[#0F172A] flex items-center justify-center text-white flex-shrink-0">
+                  {f.icon}
+                </div>
+                <div>
+                  <h4 className="font-bold text-[#0F172A] mb-1 text-sm">{f.title}</h4>
+                  <p className="text-[#64748B] text-sm leading-relaxed">{f.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
         </div>
       </div>
     </section>

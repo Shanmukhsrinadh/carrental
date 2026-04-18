@@ -1,43 +1,41 @@
 import React from 'react';
 import { vehicles } from '../data/vehicles';
 import VehicleCard from '../components/VehicleCard';
-import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function FeaturedVehicles() {
   const featured = vehicles.slice(0, 6);
 
   return (
-    <section className="py-24 bg-white">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between mb-16 gap-6 text-center md:text-left">
+    <section id="vehicles" className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
           <div>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
+            <p className="text-[#F59E0B] font-bold text-sm uppercase tracking-widest mb-3">Our Fleet</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] leading-tight">
               Popular Vehicles
             </h2>
-            <p className="text-lg text-gray-600 font-medium max-w-2xl">
-              Our most requested cars, maintained to the highest standards for your safety and comfort.
+            <p className="text-[#64748B] mt-3 max-w-lg text-sm leading-relaxed">
+              Maintained to the highest standards — every car is inspected, sanitized, and ready for your trip.
             </p>
           </div>
-          <button 
-            className="border border-gray-200 text-gray-700 hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50 rounded-full px-6 h-12 font-bold flex items-center gap-2 transition-colors"
-            onClick={() => {
-              const el = document.getElementById('categories');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}
+          <button
+            className="text-sm font-bold text-[#0F172A] border border-[#0F172A] hover:bg-[#0F172A] hover:text-white px-5 py-2.5 rounded-lg transition-colors self-start md:self-auto"
+            onClick={() => document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Explore All <ArrowRight className="w-4 h-4" />
+            View All →
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featured.map((vehicle, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {featured.map((vehicle, i) => (
             <motion.div
               key={vehicle.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: i * 0.08 }}
             >
               <VehicleCard vehicle={vehicle} />
             </motion.div>
