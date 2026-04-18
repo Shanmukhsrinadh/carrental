@@ -4,81 +4,97 @@ import { Phone, MapPin, MessageCircle } from 'lucide-react';
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const links = [
-    { label: 'Home', href: '#home' },
-    { label: 'Our Fleet', href: '#vehicles' },
-    { label: 'Services', href: '#services' },
-    { label: 'Why Choose Us', href: '#why-choose-us' },
-    { label: 'Gallery', href: '#gallery' },
-    { label: 'Contact', href: '#contact' },
-  ];
-
   return (
-    <footer className="bg-[#0F172A] text-white pt-16 pb-8">
+    <footer className="bg-[#0F172A] text-white py-10">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
 
-          {/* Brand */}
-          <div className="md:col-span-5">
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 rounded-lg bg-[#F59E0B] flex items-center justify-center font-bold text-[#0F172A] text-lg">P</div>
-              <div>
-                <div className="font-bold text-white text-base leading-none">Padma Priya Enterprises</div>
-                <div className="text-[#64748B] text-xs mt-0.5 uppercase tracking-widest">Car Rentals & Driver Services</div>
+        {/* Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
+
+          {/* Brand + SEO text */}
+          <div className="col-span-2 md:col-span-1">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-8 h-8 bg-[#F59E0B] text-[#0F172A] flex items-center justify-center font-bold rounded-md text-sm">
+                P
               </div>
+              <span className="font-semibold text-sm">
+                Padma Priya Enterprises
+              </span>
             </div>
-            <p className="text-[#475569] text-sm leading-relaxed max-w-xs">
-              Visakhapatnam's trusted travel partner — reliable vehicles, professional drivers, and transparent pricing since 2018.
+
+            <p className="text-xs text-[#64748B] leading-relaxed">
+              Car rentals in Visakhapatnam with professional drivers, airport pickup,
+              outstation trips, and local travel services across Andhra Pradesh.
             </p>
-            <button
-              onClick={() => window.open('https://wa.me/919876543210', '_blank')}
-              className="mt-6 inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1eba58] text-white text-sm font-bold px-5 py-2.5 rounded-lg transition-colors"
-            >
-              <MessageCircle className="w-4 h-4" />
-              WhatsApp Us
-            </button>
           </div>
 
-          {/* Links */}
-          <div className="md:col-span-3">
-            <h4 className="font-bold text-white text-sm mb-5 uppercase tracking-widest">Quick Links</h4>
-            <ul className="space-y-3">
-              {links.map((l) => (
-                <li key={l.label}>
-                  <a href={l.href} className="text-[#475569] hover:text-[#F59E0B] text-sm transition-colors">{l.label}</a>
-                </li>
-              ))}
+          {/* Services (SEO keywords) */}
+          <div>
+            <h4 className="text-xs font-semibold uppercase tracking-wider mb-3 text-white">
+              Services
+            </h4>
+            <ul className="space-y-2 text-[#64748B] text-xs">
+              <li><a href="#services">Car Rental Vizag</a></li>
+              <li><a href="#services">Airport Pickup</a></li>
+              <li><a href="#services">Outstation Trips</a></li>
+              <li><a href="#services">Driver Services</a></li>
+            </ul>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-xs font-semibold uppercase tracking-wider mb-3 text-white">
+              Company
+            </h4>
+            <ul className="space-y-2 text-[#64748B] text-xs">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#vehicles">Fleet</a></li>
+              <li><a href="#gallery">Gallery</a></li>
+              <li><a href="#contact">Contact</a></li>
             </ul>
           </div>
 
           {/* Contact */}
-          <div className="md:col-span-4">
-            <h4 className="font-bold text-white text-sm mb-5 uppercase tracking-widest">Contact Info</h4>
-            <ul className="space-y-4">
-              <li className="flex items-center gap-3 text-sm text-[#475569]">
-                <Phone className="w-4 h-4 text-[#F59E0B] flex-shrink-0" />
+          <div>
+            <h4 className="text-xs font-semibold uppercase tracking-wider mb-3 text-white">
+              Contact
+            </h4>
+
+            <ul className="space-y-2 text-xs text-[#64748B]">
+              <li className="flex items-center gap-2">
+                <Phone className="w-3.5 h-3.5 text-[#F59E0B]" />
                 +91 98765 43210
               </li>
-              <li className="flex items-start gap-3 text-sm text-[#475569]">
-                <MapPin className="w-4 h-4 text-[#F59E0B] flex-shrink-0 mt-0.5" />
-                <span>Visakhapatnam,<br />Andhra Pradesh, India</span>
+
+              <li className="flex items-start gap-2">
+                <MapPin className="w-3.5 h-3.5 text-[#F59E0B] mt-0.5" />
+                Visakhapatnam, Andhra Pradesh
               </li>
-              <li className="flex items-center gap-3 text-sm text-[#475569]">
-                <MessageCircle className="w-4 h-4 text-[#F59E0B] flex-shrink-0" />
-                Available 24/7 on WhatsApp
+
+              <li>
+                <button
+                  onClick={() => window.open('https://wa.me/919876543210', '_blank')}
+                  className="flex items-center gap-2 mt-2 bg-[#25D366] px-3 py-1.5 rounded-md text-white text-xs"
+                >
+                  <MessageCircle className="w-3.5 h-3.5" />
+                  WhatsApp
+                </button>
               </li>
             </ul>
           </div>
 
         </div>
 
-        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#334155]">
-          <p>© {currentYear} Padma Priya Enterprises. All Rights Reserved.</p>
-          <div className="flex gap-5">
-            <a href="#" className="hover:text-[#F59E0B] transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-[#F59E0B] transition-colors">Terms of Service</a>
+        {/* Bottom */}
+        <div className="border-t border-white/10 mt-8 pt-4 flex flex-col sm:flex-row justify-between items-center text-xs text-[#475569] gap-2">
+          <p>© {currentYear} Padma Priya Enterprises</p>
+
+          <div className="flex gap-4">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms</a>
           </div>
         </div>
+
       </div>
     </footer>
   );
