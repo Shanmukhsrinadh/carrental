@@ -141,12 +141,12 @@ export default function VehicleCategories({ onSelectVehicle }) {
           <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] mb-8">Find Your Perfect Ride</h2>
 
           {/* Category tabs */}
-          <div className="flex flex-wrap justify-center gap-2">
+          <div className="flex overflow-x-auto justify-start md:justify-center gap-2 pb-1" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveTab(cat)}
-                className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${
+                className={`flex-shrink-0 px-5 py-2 rounded-full text-sm font-semibold transition-all ${
                   activeTab === cat
                     ? 'bg-[#0F172A] text-white shadow-md'
                     : 'bg-white text-[#475569] border border-gray-200 hover:border-[#0F172A] hover:text-[#0F172A]'
