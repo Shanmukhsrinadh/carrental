@@ -91,7 +91,7 @@ export default function Navbar() {
             </a>
           ))}
           <a href="tel:+919876543210" className="flex items-center gap-2 text-[#0F172A] font-semibold text-sm py-2">
-            <Phone className="w-4 h-4 text-[#F59E0B]" /> +91 98765 43210
+            <Phone className="w-4 h-4 text-[#F59E0B]" /> +91 0000000000
           </a>
           <button
             onClick={handleBookNow}
