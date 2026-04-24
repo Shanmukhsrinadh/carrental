@@ -59,7 +59,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-5">
           <a href="tel:+910000000000" className={`flex items-center gap-2 text-sm font-semibold ${isScrolled ? 'text-[#0F172A]' : 'text-white'}`}>
             <Phone className="w-4 h-4 text-[#F59E0B]" />
-            +91 98765 43210
+            +91 0000000000
           </a>
           <button
             onClick={handleBookNow}
