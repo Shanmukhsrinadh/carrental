@@ -12,7 +12,7 @@ export default function Navbar() {
   }, []);
 
   const handleBookNow = () => {
-    window.open('https://wa.me/919876543210?text=' + encodeURIComponent('Hello, I would like to book a vehicle.'), '_blank');
+    window.open('https://wa.me/0000000000?text=' + encodeURIComponent('Hello, I would like to book a vehicle.'), '_blank');
   };
 
   const navLinks = [
@@ -57,7 +57,7 @@ export default function Navbar() {
 
         {/* Right */}
         <div className="hidden md:flex items-center gap-5">
-          <a href="tel:+919876543210" className={`flex items-center gap-2 text-sm font-semibold ${isScrolled ? 'text-[#0F172A]' : 'text-white'}`}>
+          <a href="tel:+910000000000" className={`flex items-center gap-2 text-sm font-semibold ${isScrolled ? 'text-[#0F172A]' : 'text-white'}`}>
             <Phone className="w-4 h-4 text-[#F59E0B]" />
             +91 98765 43210
           </a>

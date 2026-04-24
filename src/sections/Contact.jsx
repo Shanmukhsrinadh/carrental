@@ -68,7 +68,7 @@ export default function Contact() {
                 className="flex items-center justify-center gap-2.5 border border-white/25 hover:border-white/60 text-white text-sm font-semibold px-6 py-3.5 rounded-full transition-all duration-300"
               >
                 <Phone className="w-4 h-4 flex-shrink-0" />
-                Call +91 98765 43210
+                Call +91 0000000000
               </a>
             </div>
           </div>
