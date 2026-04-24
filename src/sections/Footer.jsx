@@ -86,21 +86,22 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-<div className="border-t border-white/10 mt-8 pt-4 flex flex-col items-center text-xs text-[#475569] gap-2">
+        <div className="border-t border-white/10 mt-8 pt-4 flex flex-col items-center text-xs text-[#475569] gap-2">
 
-  <p>© {currentYear} Padma Priya Enterprises</p>
+          <p>© {currentYear} Padma Priya Enterprises</p>
 
-  <div className="flex gap-4">
-    <a href="#">Privacy Policy</a>
-    <a href="#">Terms</a>
-  </div>
+          <div className="flex gap-4">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms</a>
+          </div>
 
-  {/* Signature */}
-  <p className="text-[10px] tracking-wider text-[#64748B] mt-1">
-    DESIGNED BY <span className="text-[#F59E0B] font-medium">SHANMUKH SRINADH</span>
-  </p>
+          {/* Signature */}
+          <p className="text-[10px] tracking-wider text-[#64748B] mt-1">
+            DESIGNED BY <span className="text-[#F59E0B] font-medium">SHANMUKH SRINADH</span>
+          </p>
 
-</div>
+        </div>
+
       </div>
     </footer>
   );
