@@ -128,10 +128,10 @@ export default function VehicleDetailPage({ vehicle, onClose }) {
   const related = vehicles.filter(v => v.category === vehicle.category && v.id !== vehicle.id).slice(0, 3);
   const color    = categoryColors[vehicle.category] || { bg: '#F8FAFC', text: '#0F172A', dot: '#64748B' };
 
-  const handleCall     = () => window.open('tel:+919876543210');
+  const handleCall     = () => window.open('tel:+917702102097');
   const handleWhatsApp = () => {
     const text = `Hi, I'd like to book the ${vehicle.name} (${vehicle.category}) — ₹${vehicle.price}/day. Please confirm availability.`;
-    window.open(`https://wa.me/919876543210?text=${encodeURIComponent(text)}`, '_blank');
+    window.open(`https://wa.me/917702102097?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   return (
@@ -253,7 +253,7 @@ export default function VehicleDetailPage({ vehicle, onClose }) {
             <div className="flex flex-col gap-2">
               <button onClick={handleCall} className="flex items-center gap-3 text-sm hover:text-[#F97316] transition-colors">
                 <Phone className="w-4 h-4 text-[#F59E0B]" />
-                <span className="font-semibold text-[#0F172A]">+91 98765 43210</span>
+                <span className="font-semibold text-[#0F172A]">+91 770-210-2097</span>
               </button>
               <button onClick={handleWhatsApp} className="flex items-center gap-3 text-sm">
                 <MessageCircle className="w-4 h-4 text-[#25D366]" />
