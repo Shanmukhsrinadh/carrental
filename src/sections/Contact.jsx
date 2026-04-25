@@ -7,11 +7,11 @@ export default function Contact() {
       {/* Map background — full section */}
       <div className="absolute inset-0 z-0">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1900.0129956572264!2d83.3104168813759!3d17.7434144632578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3943335e093e25%3A0x97edf523ac7dd5b9!2sTaj%20Travels!5e0!3m2!1sen!2sin!4v1776366429166!5m2!1sen!2sin"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d950.0218105695968!2d83.3151254!3d17.740527999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a39435dfcbfed87%3A0x693877a980513aa1!2sGirinova%20Car%20Rentals%20%26%20Services!5e0!3m2!1sen!2sin!4v1777102430623!5m2!1sen!2sin"
           className="w-full h-full border-0 pointer-events-none"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          title="Our Location"
+          title="Girinova Location"
         />
       </div>
 
@@ -55,7 +55,7 @@ export default function Contact() {
 
             <div className="flex flex-col sm:flex-row gap-3">
               <a
-                href="https://wa.me/910000000000?text=Hi%2C%20I%20want%20to%20book%20a%20vehicle"
+                href="https://wa.me/917702102097?text=Hi%2C%20I%20want%20to%20book%20a%20vehicle"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2.5 bg-green-500 hover:bg-green-400 text-white text-sm font-semibold px-6 py-3.5 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-green-500/40"
@@ -64,11 +64,11 @@ export default function Contact() {
                 Chat on WhatsApp
               </a>
               <a
-                href="tel:+910000000000"
+                href="tel:+917702102097"
                 className="flex items-center justify-center gap-2.5 border border-white/25 hover:border-white/60 text-white text-sm font-semibold px-6 py-3.5 rounded-full transition-all duration-300"
               >
                 <Phone className="w-4 h-4 flex-shrink-0" />
-                Call +91 0000000000
+                Call +91 770-210-2097
               </a>
             </div>
           </div>
@@ -88,7 +88,7 @@ export default function Contact() {
                   </p>
                 </div>
                 <a
-                  href="https://maps.google.com/?q=Taj+Travels+Visakhapatnam"
+                  href="https://maps.app.goo.gl/aH4iYWQzd7aYqMbTA"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="self-start sm:self-auto flex-shrink-0 flex items-center gap-1.5 bg-white hover:bg-gray-100 text-gray-900 text-xs font-bold tracking-wide uppercase px-3.5 py-2.5 rounded-xl transition-colors shadow-sm"
@@ -108,7 +108,7 @@ export default function Contact() {
                   <div>
                     <p className="text-white/40 text-[10px] font-semibold uppercase tracking-wider mb-0.5">Location</p>
                     <p className="text-white text-sm font-medium leading-snug">
-                      Padma Priya Enterprises, Vizag, Andhra Pradesh
+                      Flat No-13, Omkar Towers, Seethammadhaara<br />Visakhapatnam, AP IN
                     </p>
                   </div>
                 </div>
@@ -119,8 +119,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-white/40 text-[10px] font-semibold uppercase tracking-wider mb-0.5">Phone</p>
-                    <a href="tel:+910000000000" className="text-white text-sm font-medium hover:text-blue-400 transition-colors">
-                      +91 0000000000
+                    <a href="tel:+917702102097" className="text-white text-sm font-medium hover:text-blue-400 transition-colors">
+                      +91 770-210-2097
                     </a>
                   </div>
                 </div>
@@ -131,8 +131,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-white/40 text-[10px] font-semibold uppercase tracking-wider mb-0.5">Email</p>
-                    <a href="mailto:contact@padmapriyarentals.com" className="text-white text-sm font-medium hover:text-blue-400 transition-colors break-all">
-                      contact@padmapriyarentals.com
+                    <a href="mailto:khalidbabusyed@gmail.com" className="text-white text-sm font-medium hover:text-blue-400 transition-colors break-all">
+                      khalidbabusyed@gmail.com
                     </a>
                   </div>
                 </div>

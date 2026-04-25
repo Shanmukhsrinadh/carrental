@@ -11,8 +11,15 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const phoneNumber = "917702102097"; // no dashes for links
+  const displayNumber = "770-210-2097"; // UI display
+
   const handleBookNow = () => {
-    window.open('https://wa.me/0000000000?text=' + encodeURIComponent('Hello, I would like to book a vehicle.'), '_blank');
+    window.open(
+      `https://wa.me/${phoneNumber}?text=` +
+        encodeURIComponent('Hello, I would like to book a vehicle.'),
+      '_blank'
+    );
   };
 
   const navLinks = [
@@ -30,14 +37,14 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#home" className="flex items-center gap-3">
           <div className="w-9 h-9 bg-[#0F172A] rounded-lg flex items-center justify-center">
-            <span className="text-[#F59E0B] font-bold text-lg leading-none">P</span>
+            <span className="text-[#F59E0B] font-bold text-lg leading-none">G</span>
           </div>
           <div className="leading-tight">
             <span className={`font-bold text-base tracking-tight ${isScrolled ? 'text-[#0F172A]' : 'text-white'}`}>
-              Padma Priya
+              Girinova
             </span>
             <span className={`text-xs block font-medium tracking-widest uppercase ${isScrolled ? 'text-[#64748B]' : 'text-white/60'}`}>
-              Enterprises
+              Car Rentals & Services
             </span>
           </div>
         </a>
@@ -57,9 +64,9 @@ export default function Navbar() {
 
         {/* Right */}
         <div className="hidden md:flex items-center gap-5">
-          <a href="tel:+910000000000" className={`flex items-center gap-2 text-sm font-semibold ${isScrolled ? 'text-[#0F172A]' : 'text-white'}`}>
+          <a href={`tel:+${phoneNumber}`} className={`flex items-center gap-2 text-sm font-semibold ${isScrolled ? 'text-[#0F172A]' : 'text-white'}`}>
             <Phone className="w-4 h-4 text-[#F59E0B]" />
-            +91 0000000000
+            {displayNumber}
           </a>
           <button
             onClick={handleBookNow}
@@ -90,8 +97,8 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
-          <a href="tel:+919876543210" className="flex items-center gap-2 text-[#0F172A] font-semibold text-sm py-2">
-            <Phone className="w-4 h-4 text-[#F59E0B]" /> +91 0000000000
+          <a href={`tel:+${phoneNumber}`} className="flex items-center gap-2 text-[#0F172A] font-semibold text-sm py-2">
+            <Phone className="w-4 h-4 text-[#F59E0B]" /> {displayNumber}
           </a>
           <button
             onClick={handleBookNow}

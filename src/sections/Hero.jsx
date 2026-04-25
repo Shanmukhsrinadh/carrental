@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export default function Hero() {
   const handleSearch = () => {
-    window.open('https://wa.me/919876543210?text=' + encodeURIComponent("Hi, I'd like to find a car for rent in Vizag."), '_blank');
+    window.open('https://wa.me/917702102097?text=' + encodeURIComponent("Hi, I'd like to find a car for rent in Vizag."), '_blank');
   };
 
   const trustBadges = [
