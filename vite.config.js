@@ -4,7 +4,7 @@ import babel from '@rolldown/plugin-babel'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  base: '/padma-priya/',
+  base: '/Carrental/',
   plugins: [
     tailwindcss(),
     react(),
